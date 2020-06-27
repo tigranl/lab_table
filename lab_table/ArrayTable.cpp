@@ -1,48 +1,28 @@
 #include "ArrayTable.h"
 
 TKey TArrayTable::GetKey(TDataPos mode) const {
-	int pos = -1;
 	if (!IsEmpty()) {
 		switch (mode) {
 		case FIRST_POS:
-			pos = 0;
-			break;
+			return pRecs[0].Key;
 		case LAST_POS:
-			pos = DataCount - 1;
-			break;
+			return pRecs[DataCount - 1].Key;
 		default:
-			pos = CurrPos;
-			break;
+			return pRecs[CurrPos].Key;
 		}
-	}
-	if (pos == -1) {
-		return 0;
-	}
-	else {
-		return pRecs[pos].Key;
 	}
 }
 
 TValue TArrayTable::GetValue(TDataPos mode) const {
-	int pos = -1;
 	if (!IsEmpty()) {
 		switch (mode) {
 		case FIRST_POS:
-			pos = 0;
-			break;
+			return pRecs[0].pValue;
 		case LAST_POS:
-			pos = DataCount - 1;
-			break;
+			return pRecs[DataCount - 1].pValue;
 		default:
-			pos = CurrPos;
-			break;
+			return pRecs[CurrPos].pValue;
 		}
-	}
-	if (pos == -1) {
-		return "";
-	}
-	else {
-		return pRecs[pos].pValue;
 	}
 }
 
